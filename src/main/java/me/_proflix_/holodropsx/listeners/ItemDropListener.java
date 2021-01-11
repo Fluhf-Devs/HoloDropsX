@@ -11,7 +11,6 @@ import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-
 public class ItemDropListener implements Listener {
     
     
@@ -49,15 +48,12 @@ public class ItemDropListener implements Listener {
     
     private boolean checkBlacklistLore(ItemMeta meta) {
         /*
-         * hardcoded solution to stop display items in UShop showing their name
-         * TODO: add lore blacklist in the config?
+         * hardcoded solution to stop display items in Slabbo showing their name
          */
         
-        if (meta.hasLore()) {
-            for (String s : meta.getLore()) {
-                if (s.contains("Display Item")) {
-                    return true;
-                }
+        for (String s : meta.getDisplayName()) {
+            if (s.contains("Slabbo Item")) {
+                return true;
             }
         }
         return false;
